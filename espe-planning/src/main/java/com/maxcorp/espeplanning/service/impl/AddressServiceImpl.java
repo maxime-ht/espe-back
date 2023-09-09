@@ -25,10 +25,10 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressDto add(AddressDto addressDto) {
-        Optional<Address> existingAddress = addressRepository.findByCityAndStreetAndPostalCodeAndAdditionalAddressAndCountry(
+        Optional<Address> existingAddress = addressRepository.findByCityAndStreetAndZipCodeAndAdditionalAddressAndCountry(
                 addressDto.getCity(),
                 addressDto.getStreet(),
-                addressDto.getPostalCode(),
+                addressDto.getZipCode(),
                 addressDto.getAdditionalAddress(),
                 addressDto.getCountry()
         );
@@ -42,6 +42,10 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Optional<AddressDto> getById(Long id) {
+        Optional<Address> existingAddress = this.addressRepository.findById(id);
+        if (existingAddress.isPresent()) {
+            return Optional.of(this.modelMapper.map(existingAddress, AddressDto.class));
+        }
         return Optional.empty();
     }
 

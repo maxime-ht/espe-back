@@ -3,11 +3,12 @@ package com.maxcorp.espeplanning.service.impl;
 import com.maxcorp.espeplanning.dao.EmployeeRepository;
 import com.maxcorp.espeplanning.dto.AddressDto;
 import com.maxcorp.espeplanning.dto.EmployeeDto;
-import com.maxcorp.espeplanning.entity.Address;
 import com.maxcorp.espeplanning.entity.Employee;
 import com.maxcorp.espeplanning.service.AddressService;
 import com.maxcorp.espeplanning.service.EmployeeService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final ModelMapper modelMapper;
     private final AddressService addressService;
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
     @Autowired
     public EmployeeServiceImpl(EmployeeRepository employeeRepository, ModelMapper modelMapper, AddressService addressService) {

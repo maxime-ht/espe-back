@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: /db/changelog/V1__insert_initial_data.sql
+
